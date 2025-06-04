@@ -1,0 +1,224 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    min-height: 100vh;
+    width: 100vw;
+    /* Mooie blauwe gradient */
+    background: radial-gradient(circle at 20% 20%, #e3ecfa 0%, #3a7bd5 40%, #00c6fb 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.screen {
+    background: none;
+    box-shadow: none;
+    border-radius: 0;
+    padding: 0;
+    max-width: none;
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hidden {
+    display: none !important;
+}
+
+h1 {
+    color: #222;
+    font-size: 2.7rem;
+    margin-bottom: 3rem;
+    background: #dbeafe;
+    border-radius: 2.5rem;
+    padding: 1.2rem 3.5rem;
+    font-weight: 500;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.difficulty-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
+}
+
+button, .difficulty-btn, #play-again {
+    padding: 1.2rem 3.5rem;
+    border: none;
+    border-radius: 2.5rem;
+    background: #dbeafe;
+    color: #222;
+    font-size: 2rem;
+    font-weight: 400;
+    cursor: pointer;
+    margin: 0 auto;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    transition: background 0.2s, color 0.2s;
+    display: block;
+}
+button:hover, .difficulty-btn:hover, #play-again:hover {
+    background: #b6d0f7;
+    color: #1a73e8;
+}
+
+/* Game scherm layout */
+#game-screen {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    min-height: 100vh;
+    max-height: 1080px;
+    padding-top: 40px;
+}
+
+.lingo-board-container {
+    padding: 0;
+    margin: 0;
+    background: #4a7bd5;
+    border-radius: 1.5rem;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-height: 700px;
+}
+
+#game-board {
+    display: grid;
+    gap: 0;
+    background: #2563eb;
+    border-radius: 1rem;
+    border: 6px solid #6ea8fe;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    margin: 0 auto;
+    /* Dynamisch via JS, maar max breedte/hoogte voor 7x6 grid: */
+    max-width: 840px;
+    max-height: 540px;
+}
+
+.row {
+    display: contents;
+}
+
+.letter-box {
+    width: 120px;
+    height: 90px;
+    border: 2px solid #111;
+    background: #3573e6;
+    color: #111;
+    font-size: 3.5rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-transform: uppercase;
+    transition: background 0.2s, color 0.2s;
+}
+
+.letter-box.correct {
+    background: #4caf50;
+    color: #fff;
+    border-color: #222;
+}
+.letter-box.present {
+    background: #ffc107;
+    color: #fff;
+    border-color: #222;
+}
+.letter-box.absent {
+    background: #9e9e9e;
+    color: #fff;
+    border-color: #222;
+}
+
+/* Rechterzijde info */
+.lingo-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+}
+.lingo-info-box {
+    background: #dbeafe;
+    border-radius: 2rem;
+    padding: 1.5rem 4rem;
+    font-size: 2.5rem;
+    color: #222;
+    font-weight: 400;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.input-area {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+}
+#word-input {
+    padding: 1.2rem 2rem;
+    border: 2px solid #b6d0f7;
+    border-radius: 2rem;
+    font-size: 2rem;
+    width: 320px;
+    background: #f4f8ff;
+    color: #222;
+    outline: none;
+    transition: border 0.2s;
+}
+#word-input:focus {
+    border: 2px solid #1a73e8;
+}
+
+#submit-guess {
+    font-size: 2rem;
+    padding: 1.2rem 4rem;
+    margin-bottom: 2.5rem;
+}
+
+/* Result scherm */
+#result-screen h2 {
+    color: #222;
+    font-size: 2.7rem;
+    margin-bottom: 2rem;
+    background: #dbeafe;
+    border-radius: 2.5rem;
+    padding: 1.2rem 3.5rem;
+    font-weight: 500;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+#final-score {
+    margin: 2rem 0;
+    font-size: 2rem;
+    color: #222;
+    background: #dbeafe;
+    border-radius: 2rem;
+    padding: 1.2rem 3.5rem;
+    font-weight: 400;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+/* Responsive */
+@media (max-width: 1400px), (max-height: 900px) {
+    .letter-box {
+        width: 80px;
+        height: 60px;
+        font-size: 2.2rem;
+    }
+    #game-board {
+        max-width: 560px;
+        max-height: 360px;
+    }
+    #word-input {
+        width: 200px;
+        font-size: 1.2rem;
+    }
+}
