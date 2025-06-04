@@ -1,38 +1,75 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Lingo Game</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-    <div id="start-screen" class="screen">
-        <h1>Lingo Game</h1>
-        <div class="difficulty-buttons">
-            <button id="easy-btn">Easy</button>
-            <button id="difficult-btn">Difficult</button>
-            <button id="expert-btn">Expert</button>
+<!-- Startscherm -->
+<div id="start-screen" class="screen">
+    <h1>Lingo Game</h1>
+    <div class="difficulty-buttons">
+        <button id="easy-btn">Easy</button>
+        <button id="difficult-btn">Difficult</button>
+        <button id="expert-btn">Expert</button>
+    </div>
+</div>
+
+<!-- Spelscherm -->
+<div id="game-screen" class="screen hidden">
+    <div class="game-wrapper">
+        <!-- Linkerkant: Bord -->
+        <div class="left-panel">
+            <div id="game-board" class="board"></div>
+        </div>
+
+        <!-- Rechterkant: Info -->
+        <div class="right-panel">
+            <div class="lingo-info-box">
+                <div class="round-text">RONDE <span id="current-round">1</span></div>
+
+                <div class="score-box">
+                    <div id="score">0</div>
+                    <div class="hint-icon"><img src="images/hint.png" alt="" style="width: 30px"><span class="hint-count">1</span>
+                    </div>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+
+                <div class="guess-box">
+                    <input type="text" id="word-input" maxlength="7" placeholder="R" />
+                    <button id="submit-guess">✔</button>
+                </div>
+
+                <div class="pause-container" style="margin-top: 15px;">
+                    <button id="pause-btn">Pauze</button>
+                </div>
+            </div>
         </div>
     </div>
+</div>
 
-    <div id="game-screen" class="screen hidden">
-        <div class="lingo-info-box" id="round-info-box">Ronde <span id="current-round">1</span></div>
-        <div class="input-area">
-            <input type="text" id="word-input" maxlength="7" placeholder="Voer je gok in">
-        </div>
-        <button id="submit-guess">OK</button>
-        <div class="lingo-board-container">
-            <div id="game-board"></div>
-        </div>
-    </div>
+<!-- Resultaat -->
+<div id="result-screen" class="screen hidden result-screen">
+    <h2 class="result-title">🎉 Spel beëindigd! 🎉</h2>
 
-    <div id="result-screen" class="screen hidden">
-        <h2>Game Over!</h2>
-        <div id="final-score"></div>
-        <button id="play-again">Play Again</button>
-    </div>
+    <div id="final-score" class="final-score">Je score: 0</div>
 
-    <script src="js/script.js"></script>
+    <p class="result-message">
+        Goed gedaan! Wil je nog een keer proberen om je score te verbeteren?
+    </p>
+
+    <button id="play-again" class="btn-play-again">
+        Opnieuw Spelen
+    </button>
+</div>
+
+
+
+<script src="js/script.js"></script>
 </body>
 </html>

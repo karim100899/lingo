@@ -1,15 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 body {
     min-height: 100vh;
     width: 100vw;
-    /* Mooie blauwe gradient */
-    background: radial-gradient(circle at 20% 20%, #e3ecfa 0%, #3a7bd5 40%, #00c6fb 100%);
+    background: linear-gradient(to bottom right, #99ccff, #66a3ff);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,114 +18,128 @@ body {
 }
 
 .screen {
-    background: none;
-    box-shadow: none;
-    border-radius: 0;
-    padding: 0;
-    max-width: none;
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 2rem;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
 }
 
 .hidden {
     display: none !important;
 }
 
-h1 {
-    color: #222;
-    font-size: 2.7rem;
-    margin-bottom: 3rem;
-    background: #dbeafe;
-    border-radius: 2.5rem;
-    padding: 1.2rem 3.5rem;
-    font-weight: 500;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+/* STARTSCHERM */
+
+#start-screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* bovenaan */
+    align-items: center;
+    padding-top: 6rem;
+    gap: 4rem;
+    height: 100vh;
+    width: 100vw;
+    background: transparent;
+}
+
+#start-screen h1 {
+    font-size: 6rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    font-weight: 700;
+    margin-bottom: 0;
 }
 
 .difficulty-buttons {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-top: 2rem;
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 300px;
+    align-items: center;
 }
 
-button, .difficulty-btn, #play-again {
-    padding: 1.2rem 3.5rem;
+button {
+    padding: 1.2rem 3rem;
     border: none;
-    border-radius: 2.5rem;
-    background: #dbeafe;
-    color: #222;
+    border-radius: 3rem;
     font-size: 2rem;
-    font-weight: 400;
+    font-weight: bold;
+    background: white;
+    color: #240046;
     cursor: pointer;
-    margin: 0 auto;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-    transition: background 0.2s, color 0.2s;
-    display: block;
+    transition: all 0.2s ease;
+    min-width: 180px;
+    text-align: center;
 }
-button:hover, .difficulty-btn:hover, #play-again:hover {
-    background: #b6d0f7;
-    color: #1a73e8;
+button:hover {
+    background: #eee;
+    transform: scale(1.05);
 }
 
-/* Game scherm layout */
+/* GAME SCREEN */
+
 #game-screen {
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 4rem;
+    padding: 4rem 6rem;
     min-height: 100vh;
-    max-height: 1080px;
-    padding-top: 40px;
+    width: 100vw;
+    background: transparent;
 }
 
-.lingo-board-container {
-    padding: 0;
-    margin: 0;
-    background: #4a7bd5;
-    border-radius: 1.5rem;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+.game-wrapper {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 1200px;
+    gap: 4rem;
+}
+
+/* LINKER PANEL */
+
+.left-panel {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    max-height: 700px;
 }
 
 #game-board {
     display: grid;
-    gap: 0;
-    background: #2563eb;
-    border-radius: 1rem;
-    border: 6px solid #6ea8fe;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    margin: 0 auto;
-    /* Dynamisch via JS, maar max breedte/hoogte voor 7x6 grid: */
-    max-width: 840px;
-    max-height: 540px;
-}
-
-.row {
-    display: contents;
+    grid-template-columns: repeat(6, 80px);
+    grid-template-rows: repeat(5, 80px);
+    gap: 4px;
 }
 
 .letter-box {
-    width: 120px;
-    height: 90px;
-    border: 2px solid #111;
-    background: #3573e6;
-    color: #111;
-    font-size: 3.5rem;
-    font-weight: 700;
+    width: 80px;
+    height: 80px;
+    background: #2387e6;
+    color: white;
+    font-size: 2.8rem;
+    font-weight: bold;
+    border: 2px solid #0a3d91;
     display: flex;
     justify-content: center;
     align-items: center;
     text-transform: uppercase;
-    transition: background 0.2s, color 0.2s;
+    border-radius: 6px;
 }
 
+/* KLEUREN VOOR LETTERS */
 .letter-box.correct {
     background: #4caf50;
     color: #fff;
@@ -141,84 +156,254 @@ button:hover, .difficulty-btn:hover, #play-again:hover {
     border-color: #222;
 }
 
-/* Rechterzijde info */
-.lingo-info {
+/* RECHTER PANEL */
+
+.right-panel {
+    flex: 1 1 auto;
     display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    align-items: center;
-}
-.lingo-info-box {
-    background: #dbeafe;
-    border-radius: 2rem;
-    padding: 1.5rem 4rem;
-    font-size: 2.5rem;
-    color: #222;
-    font-weight: 400;
-    margin-bottom: 2rem;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    justify-content: center;
+    align-items: flex-start;
 }
 
-.input-area {
-    margin-top: 0;
-    margin-bottom: 1.5rem;
+.lingo-info-box {
+    background: #dbeafe;
+    border-radius: 1.5rem;
+    padding: 2rem 3rem;
+    font-size: 2rem;
+    color: #1e3a8a;
+    font-weight: 700;
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
 }
+
+.round-text {
+    font-weight: 700;
+    font-size: 2.2rem;
+    text-align: center;
+}
+
+.score-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+    font-size: 2.4rem;
+    background: #aecbfa;
+    padding: 0.4rem 1.2rem;
+    border-radius: 1rem;
+    color: #0f172a;
+}
+
+#score {
+    font-weight: 700;
+}
+
+.hint-icon {
+    cursor: pointer;
+    user-select: none; /* voorkomt selecteren bij klik */
+    background: yellow;
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    color: #240046;
+    font-size: 1.6rem;
+    position: relative;
+}
+
+.hint-icon .hint-count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #240046;
+    color: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 1rem;
+    font-weight: 700;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timer-box {
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-align: center;
+    color: #0f172a;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 14px;
+    background: #d0d0d0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-top: 1rem;
+}
+
+.progress-fill {
+    height: 100%;
+    background: red;
+    width: 30%; /* voorbeeld */
+    transition: width 0.3s ease;
+}
+
+/* INPUT */
+
+.guess-box {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
 #word-input {
-    padding: 1.2rem 2rem;
+    padding: 1rem;
     border: 2px solid #b6d0f7;
     border-radius: 2rem;
-    font-size: 2rem;
-    width: 320px;
+    font-size: 1.8rem;
+    width: 180px;
+    text-align: center;
     background: #f4f8ff;
     color: #222;
     outline: none;
-    transition: border 0.2s;
-}
-#word-input:focus {
-    border: 2px solid #1a73e8;
 }
 
 #submit-guess {
-    font-size: 2rem;
-    padding: 1.2rem 4rem;
-    margin-bottom: 2.5rem;
+    font-size: 1.6rem;
+    padding: 0.8rem 2rem;
+    background: white;
+    color: #240046;
+    border-radius: 50%;
+    width: 56px;
+    height: 56px;
+    cursor: pointer;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease;
+}
+#submit-guess:hover {
+    background: #eee;
+    transform: scale(1.1);
 }
 
-/* Result scherm */
-#result-screen h2 {
-    color: #222;
-    font-size: 2.7rem;
-    margin-bottom: 2rem;
-    background: #dbeafe;
-    border-radius: 2.5rem;
-    padding: 1.2rem 3.5rem;
-    font-weight: 500;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
-}
-#final-score {
-    margin: 2rem 0;
-    font-size: 2rem;
-    color: #222;
-    background: #dbeafe;
-    border-radius: 2rem;
-    padding: 1.2rem 3.5rem;
-    font-weight: 400;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+.result-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    gap: 20px; /* Ruimte tussen de elementen */
+    text-align: center;
+    min-height: 300px; /* Optioneel: hoogte zodat het mooi in het scherm staat */
 }
 
-/* Responsive */
-@media (max-width: 1400px), (max-height: 900px) {
-    .letter-box {
-        width: 80px;
-        height: 60px;
-        font-size: 2.2rem;
-    }
+.result-title {
+    font-size: 2.5rem;
+    margin: 0;
+    color: #333;
+}
+
+.final-score {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #007BFF;
+    margin: 0;
+}
+
+.result-message {
+    font-size: 1.2rem;
+    color: #555;
+    margin: 0 0 20px 0;
+    max-width: 300px;
+}
+
+.btn-play-again {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    width: 200px; /* vaste breedte zodat knop mooi is */
+}
+
+.btn-play-again:hover {
+    background-color: #0056b3;
+}
+
+
+/* RESPONSIVE AANPASSING */
+
+@media (max-width: 1200px) {
     #game-board {
-        max-width: 560px;
-        max-height: 360px;
+        grid-template-columns: repeat(6, 60px);
+        grid-template-rows: repeat(5, 60px);
     }
+
+    .letter-box {
+        width: 60px;
+        height: 60px;
+        font-size: 2rem;
+    }
+
     #word-input {
-        width: 200px;
+        width: 140px;
+        font-size: 1.4rem;
+    }
+
+    .lingo-info-box {
+        width: 260px;
+        padding: 1.5rem 2rem;
+        font-size: 1.6rem;
+    }
+
+    .score-box {
+        font-size: 1.8rem;
+        padding: 0.3rem 1rem;
+    }
+
+    .hint-icon {
+        width: 32px;
+        height: 32px;
         font-size: 1.2rem;
+    }
+
+    .hint-icon .hint-count {
+        width: 14px;
+        height: 14px;
+        font-size: 0.75rem;
+    }
+
+    #submit-guess {
+        width: 48px;
+        height: 48px;
+        padding: 0.6rem 1rem;
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    #game-screen, .game-wrapper {
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+        gap: 2rem;
+    }
+
+    .left-panel, .right-panel {
+        width: 100%;
+        max-width: 480px;
     }
 }
