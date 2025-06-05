@@ -70,10 +70,10 @@ wordInput.addEventListener("keypress", (e) => {
 pauseBtn.addEventListener("click", () => {
     if (!isPaused) {
         pauseGame();
-        pauseBtn.textContent = "Hervatten";
+        pauseBtn.textContent = "Resume";
     } else {
         resumeGame();
-        pauseBtn.textContent = "Pauze";
+        pauseBtn.textContent = "Pause";
     }
 });
 
@@ -81,7 +81,7 @@ pauseBtn.addEventListener("click", () => {
 hintBtn.addEventListener("click", () => {
     const remainingHints = parseInt(hintCountElem.textContent);
     if (remainingHints <= 0) {
-        alert("Je hebt al een hint gebruikt deze ronde.");
+        alert("You've already used a hint this round.");
         return;
     }
 
@@ -114,7 +114,7 @@ hintBtn.addEventListener("click", () => {
     }
 
     if (unknownPositions.length === 0) {
-        alert("Er zijn geen onbekende letters meer voor een hint.");
+        alert("There are no unknown letters left for a hint.");
         return;
     }
 
@@ -229,18 +229,18 @@ async function submitGuess() {
     const L = currentWord.length;
 
     if (guess.length !== L) {
-        alert(`Voer een ${L}-letter woord in.`);
+        alert(`Please enter a ${L}-letter word.`);
         return;
     }
 
     try {
         const resp = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${guess}`);
         if (!resp.ok) {
-            alert("Dit woord staat niet in het woordenboek.");
+            alert("This word is not in the dictionary.");
             return;
         }
     } catch {
-        alert("Fout bij controleren van het woord.");
+        alert("Error checking the word.");
         return;
     }
 
@@ -457,7 +457,7 @@ function resumeGame() {
 
 function updateTimerDisplay() {
     if (!timerDisplay) return;
-    timerDisplay.textContent = `Tijd: ${timeLeft}s`;
+    timerDisplay.textContent = `Time: ${timeLeft}s`;
 }
 
 function endGame(won) {

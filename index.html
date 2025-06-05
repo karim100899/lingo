@@ -22,18 +22,18 @@
     <div class="game-wrapper">
         <!-- Linkerkant: Bord -->
         <div class="left-panel">
+            <div id="pause-overlay" class="hidden">Paused</div>
             <div id="game-board" class="board"></div>
         </div>
 
         <!-- Rechterkant: Info -->
         <div class="right-panel">
             <div class="lingo-info-box">
-                <div class="round-text">RONDE <span id="current-round">1</span></div>
+                <div class="round-text">ROUND <span id="current-round">1</span></div>
 
                 <div class="score-box">
                     <div id="score">0</div>
-                    <div class="hint-icon"><img src="images/hint.png" alt="" style="width: 30px"><span class="hint-count">1</span>
-                    </div>
+                    <div class="hint-icon"><img src="images/hint.png" alt="" style="width: 30px"><span class="hint-count">1</span></div>
                 </div>
 
                 <div class="progress-bar">
@@ -46,7 +46,7 @@
                 </div>
 
                 <div class="pause-container" style="margin-top: 15px;">
-                    <button id="pause-btn">Pauze</button>
+                    <button id="pause-btn">Pause</button>
                 </div>
             </div>
         </div>
@@ -55,18 +55,19 @@
 
 <!-- Resultaat -->
 <div id="result-screen" class="screen hidden result-screen">
-    <h2 class="result-title">🎉 Spel beëindigd! 🎉</h2>
+    <h2 class="result-title">🎉 Game Over! 🎉</h2>
 
-    <div id="final-score" class="final-score">Je score: 0</div>
+    <div id="final-score" class="final-score">Your score: 0</div>
 
     <p class="result-message">
-        Goed gedaan! Wil je nog een keer proberen om je score te verbeteren?
+        Well done! Want to try again to improve your score?
     </p>
 
     <button id="play-again" class="btn-play-again">
-        Opnieuw Spelen
+        Play Again
     </button>
 </div>
+
 
 
 
