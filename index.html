@@ -22,7 +22,6 @@
     <div class="game-wrapper">
         <!-- Linkerkant: Bord -->
         <div class="left-panel">
-            <div id="pause-overlay" class="hidden">Paused</div>
             <div id="game-board" class="board"></div>
         </div>
 
@@ -53,23 +52,22 @@
     </div>
 </div>
 
+<!-- Pauzescherm -->
+<div id="pause-screen" class="screen hidden">
+    <h2>⏸️ Spel Gepauzeerd</h2>
+    <p>Neem een korte pauze. Klik op de knop hieronder om verder te gaan.</p>
+    <button id="resume-btn">Doorgaan</button>
+</div>
+
 <!-- Resultaat -->
 <div id="result-screen" class="screen hidden result-screen">
     <h2 class="result-title">🎉 Game Over! 🎉</h2>
-
     <div id="final-score" class="final-score">Your score: 0</div>
-
     <p class="result-message">
         Well done! Want to try again to improve your score?
     </p>
-
-    <button id="play-again" class="btn-play-again">
-        Play Again
-    </button>
+    <button id="play-again" class="btn-play-again">Play Again</button>
 </div>
-
-
-
 
 <script src="js/script.js"></script>
 </body>

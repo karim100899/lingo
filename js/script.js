@@ -283,10 +283,6 @@ function updateGameBoardRow(guess) {
     const used = new Array(L).fill(false);
     const rowOffset = row * L;
 
-    // 1e letter wordt altijd ingevuld
-    const nextRow = row + 1;
-    const isLastRow = row >= maxGuesses - 1;
-
     // === Stap 1: Markeer huidige rij (kleur en inhoud) ===
     for (let i = 0; i < L; i++) {
         const cell = gameBoard.children[rowOffset + i];
@@ -319,19 +315,34 @@ function updateGameBoardRow(guess) {
         }
     }
 
-    // === Stap 2: Vul automatische letters in de volgende rij ===
+    // === Stap 2: Verzamel ALLE correct geraden letters van ALLE vorige rijen ===
+    const knownCorrectLetters = new Array(L).fill(null);
+    for (let r = 0; r <= row; r++) {
+        for (let c = 0; c < L; c++) {
+            const index = r * L + c;
+            const cell = gameBoard.children[index];
+            if (cell.classList.contains("correct")) {
+                knownCorrectLetters[c] = cell.textContent;
+            }
+        }
+    }
+
+    // === Stap 3: Vul volgende rij met alle bekende correcte letters ===
+    const isLastRow = row >= maxGuesses - 1;
     if (!isLastRow) {
-        const nextRowOffset = nextRow * L;
+        const nextRowOffset = (row + 1) * L;
 
         for (let i = 0; i < L; i++) {
             const nextCell = gameBoard.children[nextRowOffset + i];
+
             if (i === 0) {
-                nextCell.textContent = currentWord[0].toUpperCase(); // Eerste letter
-            } else if (guess[i] === currentWord[i]) {
-                nextCell.textContent = guess[i].toUpperCase(); // Correcte letter
+                nextCell.textContent = currentWord[0].toUpperCase();
+            } else if (knownCorrectLetters[i]) {
+                nextCell.textContent = knownCorrectLetters[i];
             } else {
                 nextCell.textContent = "•";
             }
+
             nextCell.classList.remove("correct", "present", "absent", "hinted");
         }
     }
