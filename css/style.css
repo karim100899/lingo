@@ -1,10 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&display=swap");
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
 }
 
 body {
@@ -15,6 +15,81 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
+}
+
+.home-button {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    background: #ffffff;
+    border: 2px solid #b6d0f7;
+    border-radius: 20px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    cursor: pointer;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #240046;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    min-width: auto;
+    width: auto;
+}
+
+.home-button:hover {
+    background: #f4f8ff;
+    transform: scale(1.05);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.home-button:active {
+    transform: scale(0.98);
+}
+
+.home-button.hidden {
+    display: none;
+}
+
+.home-button img {
+    width: 20px !important;
+    height: 20px !important;
+}
+
+/* New pause button styling */
+.pause-button-new {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    background: #ffffff !important;
+    border: 2px solid #b6d0f7 !important;
+    border-radius: 50% !important;
+    padding: 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+    z-index: 1000 !important;
+    width: 44px !important;
+    height: 44px !important;
+}
+
+.pause-button-new:hover {
+    background: #f4f8ff !important;
+    transform: scale(1.05) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+}
+
+.pause-button-new:active {
+    transform: scale(0.98) !important;
+}
+
+.pause-button-new.hidden {
+    display: none !important;
 }
 
 .screen {
@@ -39,10 +114,10 @@ body {
 #start-screen {
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; /* bovenaan */
+    justify-content: flex-start;
     align-items: center;
     padding-top: 6rem;
-    gap: 4rem;
+    gap: 2rem;
     height: 100vh;
     width: 100vw;
     background: transparent;
@@ -55,6 +130,21 @@ body {
     letter-spacing: 8px;
     font-weight: 700;
     margin-bottom: 0;
+}
+
+.title {
+    width: 500px;
+    max-width: 90%;
+    height: auto;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #000000;
+    margin-top: -10px;
+    margin-bottom: 20px;
+    font-style: italic;
+    text-align: center;
 }
 
 .difficulty-buttons {
@@ -92,7 +182,7 @@ button:hover {
     justify-content: center;
     align-items: flex-start;
     gap: 4rem;
-    padding: 4rem 6rem;
+    padding: 4rem 2rem;
     min-height: 100vh;
     width: 100vw;
     background: transparent;
@@ -202,7 +292,7 @@ button:hover {
 
 .hint-icon {
     cursor: pointer;
-    user-select: none; /* voorkomt selecteren bij klik */
+    user-select: none;
     background: yellow;
     border-radius: 50%;
     width: 38px;
@@ -251,17 +341,33 @@ button:hover {
 .progress-fill {
     height: 100%;
     background: red;
-    width: 30%; /* voorbeeld */
+    width: 30%;
     transition: width 0.3s ease;
 }
 
 /* INPUT */
 
+.input-label {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 8px;
+    text-align: center;
+    font-weight: 500;
+    display: block;
+    width: 100%;
+}
+
 .guess-box {
-    margin-top: 2rem;
     display: flex;
-    justify-content: center;
-    gap: 1rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.input-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
 #word-input {
@@ -269,7 +375,7 @@ button:hover {
     border: 2px solid #b6d0f7;
     border-radius: 2rem;
     font-size: 1.8rem;
-    width: 180px;
+    width: 250px;
     text-align: center;
     background: #f4f8ff;
     color: #222;
@@ -277,23 +383,55 @@ button:hover {
 }
 
 #submit-guess {
-    font-size: 1.6rem;
-    padding: 0.8rem 2rem;
-    background: white;
-    color: #240046;
-    border-radius: 50%;
-    width: 56px;
-    height: 56px;
+    font-size: 1.2rem;
+    padding: 1rem 1.5rem;
+    background: #28a745;
+    color: white;
+    border-radius: 8px;
     cursor: pointer;
     border: none;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.2s ease;
+    font-weight: 600;
+    min-width: 80px;
+    height: 56px;
 }
+
 #submit-guess:hover {
+    background: #218838;
+    transform: scale(1.05);
+}
+
+#submit-guess:active {
+    background: #1e7e34;
+    transform: scale(0.98);
+}
+
+#pause-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.pause-box {
+    text-align: center;
+}
+
+.pause-avatar {
+    width: 400px;
+    max-width: 90%;
+    height: auto;
+}
+
+.pause-speech-bubble {
     background: #eee;
-    transform: scale(1.1);
+    padding: 20px;
+    border-radius: 10px;
+    margin: 20px;
+    font-size: 1.2rem;
 }
 
 .result-screen {
@@ -302,9 +440,9 @@ button:hover {
     align-items: center;
     justify-content: center;
     padding: 40px 20px;
-    gap: 20px; /* Ruimte tussen de elementen */
+    gap: 20px;
     text-align: center;
-    min-height: 300px; /* Optioneel: hoogte zodat het mooi in het scherm staat */
+    min-height: 300px;
 }
 
 .result-title {
@@ -316,7 +454,7 @@ button:hover {
 .final-score {
     font-size: 3rem;
     font-weight: bold;
-    color: #007BFF;
+    color: #007bff;
     margin: 0;
 }
 
@@ -328,7 +466,7 @@ button:hover {
 }
 
 .btn-play-again {
-    background-color: #007BFF;
+    background-color: #007bff;
     border: none;
     color: white;
     padding: 15px 30px;
@@ -336,13 +474,12 @@ button:hover {
     border-radius: 6px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    width: 200px; /* vaste breedte zodat knop mooi is */
+    width: 200px;
 }
 
 .btn-play-again:hover {
     background-color: #0056b3;
 }
-
 
 /* RESPONSIVE AANPASSING */
 
@@ -395,15 +532,218 @@ button:hover {
 }
 
 @media (max-width: 768px) {
-    #game-screen, .game-wrapper {
+    #game-screen,
+    .game-wrapper {
         flex-direction: column;
         align-items: center;
         padding: 2rem;
         gap: 2rem;
     }
 
-    .left-panel, .right-panel {
+    .left-panel,
+    .right-panel {
         width: 100%;
         max-width: 480px;
+    }
+
+    .lingo-info-box {
+        width: 100%;
+    }
+
+    button {
+        padding: 1rem 2rem;
+        font-size: 1.6rem;
+    }
+
+    .home-button,
+    .pause-button-new {
+        top: 10px;
+        padding: 6px 10px;
+        font-size: 0.75rem;
+    }
+
+    .home-button {
+        left: 10px;
+    }
+
+    .pause-button-new {
+        right: 10px;
+    }
+
+    .home-button img,
+    .pause-button-new img {
+        width: 16px !important;
+        height: 16px !important;
+    }
+}
+
+/* Added more responsive breakpoints for smaller devices */
+@media (max-width: 576px) {
+    #game-board {
+        grid-template-columns: repeat(6, 45px);
+        grid-template-rows: repeat(5, 45px);
+        gap: 3px;
+    }
+
+    .letter-box {
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
+        border-width: 1px;
+    }
+
+    .lingo-info-box {
+        padding: 1.2rem 1.5rem;
+        gap: 1rem;
+    }
+
+    .round-text {
+        font-size: 1.8rem;
+    }
+
+    .score-box {
+        font-size: 1.5rem;
+    }
+
+    #word-input {
+        width: 120px;
+        padding: 0.8rem;
+    }
+
+    #submit-guess {
+        min-width: 60px;
+        height: 46px;
+    }
+}
+
+@media (max-width: 400px) {
+    #game-board {
+        grid-template-columns: repeat(6, 38px);
+        grid-template-rows: repeat(5, 38px);
+        gap: 2px;
+    }
+
+    .letter-box {
+        width: 38px;
+        height: 38px;
+        font-size: 1.2rem;
+    }
+
+    .lingo-info-box {
+        padding: 1rem;
+        gap: 0.8rem;
+    }
+
+    #word-input {
+        width: 100px;
+        padding: 0.6rem;
+        font-size: 1.2rem;
+    }
+
+    #submit-guess {
+        min-width: 50px;
+        height: 40px;
+        padding: 0.5rem;
+    }
+
+    .input-row {
+        gap: 5px;
+    }
+
+    button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1.4rem;
+        min-width: 150px;
+    }
+
+    .difficulty-buttons {
+        gap: 1rem;
+    }
+
+    #start-screen {
+        padding-top: 4rem;
+    }
+}
+
+/* Fix for very small devices and landscape orientation */
+@media (max-height: 500px) {
+    #start-screen {
+        padding-top: 2rem;
+        gap: 1rem;
+    }
+
+    .title {
+        width: 300px;
+    }
+
+    .difficulty-buttons {
+        gap: 0.8rem;
+    }
+
+    button {
+        padding: 0.6rem 1.2rem;
+        font-size: 1.2rem;
+    }
+
+    #game-screen {
+        padding: 1rem;
+    }
+}
+
+/* Fix for landscape orientation on mobile */
+@media (max-height: 500px) and (orientation: landscape) {
+    #game-screen,
+    .game-wrapper {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .left-panel,
+    .right-panel {
+        height: 100vh;
+        display: flex;
+        align-items: center;
+    }
+
+    #game-board {
+        grid-template-columns: repeat(6, 40px);
+        grid-template-rows: repeat(5, 40px);
+    }
+
+    .letter-box {
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+    }
+
+    .lingo-info-box {
+        width: 220px;
+        padding: 1rem;
+        gap: 0.5rem;
+    }
+}
+
+/* Fix for overflow issues */
+@media (max-width: 320px) {
+    body {
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .screen {
+        overflow-y: auto;
+    }
+
+    #game-board {
+        grid-template-columns: repeat(6, 32px);
+        grid-template-rows: repeat(5, 32px);
+        gap: 2px;
+    }
+
+    .letter-box {
+        width: 32px;
+        height: 32px;
+        font-size: 1rem;
     }
 }

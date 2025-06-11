@@ -7,9 +7,23 @@
     <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
+
+<!-- Home button - visible on all screens except start screen -->
+<button id="home-btn" class="home-button hidden">
+    <img src="images/home.png" alt="Home" style="width: 20px; height: 20px;" />
+    <span>Home</span>
+</button>
+
+<!-- Pause button - visible only during game, with fallback text -->
+<button id="pause-btn" class="pause-button-new hidden">
+    <img id="pause-icon" src="images/pause.png" alt="Pause" style="width: 24px; height: 24px;" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';" />
+    <span id="pause-fallback" style="display: none; font-size: 12px; font-weight: bold;">⏸️</span>
+</button>
+
 <!-- Startscherm -->
 <div id="start-screen" class="screen">
-    <h1>Lingo Game</h1>
+    <img src="images/lingo_logo.png" alt="Avatar" class="title" />
+    <div class="subtitle">English Edition</div>
     <div class="difficulty-buttons">
         <button id="easy-btn">Easy</button>
         <button id="difficult-btn">Difficult</button>
@@ -40,24 +54,25 @@
                 </div>
 
                 <div class="guess-box">
-                    <input type="text" id="word-input" maxlength="7" placeholder="R" />
-                    <button id="submit-guess">✔</button>
-                </div>
-
-                <div class="pause-container" style="margin-top: 15px;">
-                    <button id="pause-btn">Pause</button>
+                    <div class="input-label">Type your guess here:</div>
+                    <div class="input-row">
+                        <input type="text" id="word-input" maxlength="7" />
+                        <button type="submit" id="submit-guess">Submit</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-<!-- Pauzescherm -->
-<div id="pause-screen" class="screen hidden">
-    <h2>⏸️ Spel Gepauzeerd</h2>
-    <p>Neem een korte pauze. Klik op de knop hieronder om verder te gaan.</p>
-    <button id="resume-btn">Doorgaan</button>
-</div>
+<!-- ✅ Pauzescherm -->
+<section id="pause-screen" class="hidden">
+    <div class="pause-box">
+        <img src="images/lingo_logo.png" alt="Avatar" class="pause-avatar" />
+        <div class="pause-speech-bubble">Wil je doorgaan met het spel?</div>
+        <button id="resume-yes" class="btn">JA</button>
+    </div>
+</section>
 
 <!-- Resultaat -->
 <div id="result-screen" class="screen hidden result-screen">
